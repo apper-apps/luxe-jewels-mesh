@@ -16,15 +16,15 @@ const CartDrawer = ({
   className,
   ...props 
 }) => {
-  const getProductById = (productId) => {
-    return products.find(product => product.Id === productId);
+const getProductById = (productId) => {
+    return (products || []).find(product => product?.Id == productId);
   };
   
   const calculateSubtotal = () => {
-    return cartItems.reduce((total, item) => {
-      const product = getProductById(item.productId);
+return (cartItems || []).reduce((total, item) => {
+      const product = getProductById(item?.productId);
       if (product) {
-        return total + (product.price * item.quantity);
+        return total + ((product?.price || 0) * (item?.quantity || 0));
       }
       return total;
     }, 0);
@@ -116,8 +116,8 @@ const CartDrawer = ({
                 </div>
               ) : (
                 <div className="p-6 space-y-4">
-                  {cartItems.map((item) => {
-                    const product = getProductById(item.productId);
+{(cartItems || []).map((item) => {
+                    const product = getProductById(item?.productId);
                     if (!product) return null;
                     
                     return (

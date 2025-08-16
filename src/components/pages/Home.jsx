@@ -100,8 +100,8 @@ const Home = ({ className, ...props }) => {
     }
   ];
 
-  const handleAddToCart = (product) => {
-    addToCart(product.Id);
+const handleAddToCart = (product) => {
+    addToCart(product?.Id);
   };
 
   const handleQuickView = (product) => {
@@ -240,8 +240,8 @@ const Home = ({ className, ...props }) => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {featuredProducts.map((product, index) => (
-            <motion.div
-              key={product.Id}
+<motion.div
+              key={product?.Id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -281,8 +281,8 @@ const Home = ({ className, ...props }) => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {newArrivals.map((product, index) => (
-              <motion.div
-                key={product.Id}
+<motion.div
+                key={product?.Id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}

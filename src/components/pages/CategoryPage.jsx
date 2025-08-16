@@ -28,7 +28,7 @@ const CategoryPage = ({ className, ...props }) => {
       setLoading(true);
       setError(null);
       
-      let data;
+let data;
       if (category) {
         data = await productService.getByCategory(category);
       } else {
@@ -53,7 +53,7 @@ const CategoryPage = ({ className, ...props }) => {
   }, [products, appliedFilters, sortBy]);
 
   const applyFilters = () => {
-    let filtered = [...products];
+let filtered = [...(products || [])];
 
     // Apply filters
     Object.keys(appliedFilters).forEach(filterType => {
@@ -106,7 +106,7 @@ const CategoryPage = ({ className, ...props }) => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product.Id);
+addToCart(product.Id);
   };
 
   const handleSortChange = (newSortBy) => {
@@ -123,7 +123,7 @@ const CategoryPage = ({ className, ...props }) => {
   };
 
 const getCategoryDescription = () => {
-    const descriptions = {
+const descriptions = {
       rings: "Discover our exquisite collection of rings, from elegant engagement rings to fashion-forward statement pieces and traditional toe rings.",
       necklaces: "Explore beautiful necklaces that add elegance and sophistication to any outfit, from delicate chains to elaborate temple jewelry.",
       earrings: "Find the perfect earrings to complement your style, from traditional jhumkas and chandbali to modern studs and statement pieces.",

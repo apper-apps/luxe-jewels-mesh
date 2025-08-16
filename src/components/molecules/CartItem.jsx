@@ -27,11 +27,11 @@ const CartItem = ({
     if (newQuantity > product.stock) return;
     
     setQuantity(newQuantity);
-    onUpdateQuantity?.(item.productId, newQuantity);
+onUpdateQuantity?.(item?.productId, newQuantity);
   };
   
   const handleRemove = () => {
-    onRemoveItem?.(item.productId);
+onRemoveItem?.(item?.productId);
   };
   
   const total = product.price * quantity;
@@ -51,8 +51,8 @@ const CartItem = ({
           <div className="w-full h-full bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 shimmer" />
         )}
         <img
-          src={product.images?.[0]}
-          alt={product.name}
+src={product?.images?.[0]}
+          alt={product?.name || ''}
           className={cn(
             "w-full h-full object-cover transition-opacity duration-300",
             imageLoaded ? "opacity-100" : "opacity-0"
@@ -66,10 +66,10 @@ const CartItem = ({
         <div className="flex items-start justify-between mb-2">
           <div>
             <h3 className="font-medium text-gray-900 line-clamp-2">
-              {product.name}
+              {product?.name || 'Unknown Product'}
             </h3>
-            <p className="text-sm text-gray-600">{product.category}</p>
-            {item.size && (
+            <p className="text-sm text-gray-600">{product?.category || ''}</p>
+            {item?.size && (
               <p className="text-xs text-gray-500">Size: {item.size}</p>
             )}
           </div>
@@ -84,12 +84,12 @@ const CartItem = ({
         </div>
         
         <div className="flex items-center gap-2 mb-2">
-          {product.metal && (
+          {product?.metal && (
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
               {product.metal}
             </span>
           )}
-          {product.gemstone && (
+          {product?.gemstone && (
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
               {product.gemstone}
             </span>

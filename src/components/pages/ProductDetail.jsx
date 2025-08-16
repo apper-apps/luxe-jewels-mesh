@@ -70,7 +70,7 @@ const ProductDetail = ({ className, ...props }) => {
       setLoading(true);
       setError(null);
       
-      const [productData, relatedData] = await Promise.all([
+const [productData, relatedData] = await Promise.all([
         productService.getById(id),
         productService.getRelated(id, 4)
       ]);
@@ -78,7 +78,7 @@ const ProductDetail = ({ className, ...props }) => {
       setProduct(productData);
       setRelatedProducts(relatedData);
       
-      if (productData.sizes && productData.sizes.length > 0) {
+if (productData?.sizes && productData.sizes.length > 0) {
         setSelectedSize(productData.sizes[0]);
       }
     } catch (err) {
@@ -105,7 +105,7 @@ const ProductDetail = ({ className, ...props }) => {
       return;
     }
 
-    const success = await addToCart(product.Id, quantity, selectedSize);
+const success = await addToCart(product?.Id, quantity, selectedSize);
     if (success) {
       toast.success("Added to cart successfully!");
     }
@@ -177,8 +177,8 @@ const ProductDetail = ({ className, ...props }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                src={product.images?.[selectedImageIndex]}
-                alt={product.name}
+src={product?.images?.[selectedImageIndex]}
+                alt={product?.name || ''}
                 className={cn(
                   "w-full h-full object-cover transition-transform duration-300",
                   isZoomed && "scale-150"
@@ -188,16 +188,16 @@ const ProductDetail = ({ className, ...props }) => {
 
             {/* Badges */}
             <div className="absolute top-4 left-4 flex flex-col gap-2">
-              {product.isNew && (
+              {product?.isNew && (
                 <Badge variant="primary">New</Badge>
               )}
-              {product.discount > 0 && (
+              {product?.discount > 0 && (
                 <Badge variant="error">-{product.discount}%</Badge>
               )}
-              {product.stock <= 5 && product.stock > 0 && (
+              {product?.stock <= 5 && product.stock > 0 && (
                 <Badge variant="warning">Low Stock</Badge>
               )}
-              {product.stock === 0 && (
+              {product?.stock === 0 && (
                 <Badge variant="error">Out of Stock</Badge>
               )}
             </div>
@@ -211,7 +211,7 @@ const ProductDetail = ({ className, ...props }) => {
 
           {/* Thumbnail Images */}
           <div className="grid grid-cols-4 gap-4">
-            {product.images?.map((image, index) => (
+            {product?.images?.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImageIndex(index)}
@@ -224,7 +224,7 @@ const ProductDetail = ({ className, ...props }) => {
               >
                 <img
                   src={image}
-                  alt={`${product.name} ${index + 1}`}
+                  alt={`${product?.name || ''} ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
               </button>
@@ -236,9 +236,9 @@ const ProductDetail = ({ className, ...props }) => {
         <div className="space-y-6">
           <div>
             <h1 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-              {product.name}
+              {product?.name || ''}
             </h1>
-            <p className="text-lg text-gray-600 mb-4">{product.category}</p>
+            <p className="text-lg text-gray-600 mb-4">{product?.category || ''}</p>
             
             {/* Rating */}
             <div className="flex items-center gap-2 mb-4">
@@ -249,7 +249,7 @@ const ProductDetail = ({ className, ...props }) => {
                     name="Star"
                     size={16}
                     className={cn(
-                      i < Math.floor(product.rating || 4.5)
+                      i < Math.floor(product?.rating || 4.5)
                         ? "fill-yellow-400 text-yellow-400"
                         : "text-gray-300"
                     )}
@@ -257,7 +257,7 @@ const ProductDetail = ({ className, ...props }) => {
                 ))}
               </div>
               <span className="text-sm text-gray-600">
-                {product.rating || "4.5"} ({product.reviews || "24"} reviews)
+                {product?.rating || "4.5"} ({product?.reviews || "24"} reviews)
               </span>
             </div>
           </div>
@@ -266,15 +266,15 @@ const ProductDetail = ({ className, ...props }) => {
           <div className="space-y-2">
             <div className="flex items-center gap-4">
               <span className="text-3xl font-bold text-gray-900">
-                {formatPrice(product.price)}
+                {formatPrice(product?.price || 0)}
               </span>
-              {product.originalPrice && product.originalPrice > product.price && (
+              {product?.originalPrice && product.originalPrice > product.price && (
                 <span className="text-xl text-gray-500 line-through">
                   {formatPrice(product.originalPrice)}
                 </span>
               )}
             </div>
-            {product.originalPrice && product.originalPrice > product.price && (
+            {product?.originalPrice && product.originalPrice > product.price && (
               <p className="text-sm text-green-600 font-medium">
                 Save {formatPrice(product.originalPrice - product.price)} ({product.discount}% off)
               </p>
@@ -285,19 +285,19 @@ const ProductDetail = ({ className, ...props }) => {
           <div className="grid grid-cols-2 gap-4 py-4 border-t border-b border-gray-200">
             <div>
               <span className="text-sm font-medium text-gray-900 block">Metal:</span>
-              <span className="text-sm text-gray-600">{product.metal}</span>
+              <span className="text-sm text-gray-600">{product?.metal || 'N/A'}</span>
             </div>
             <div>
               <span className="text-sm font-medium text-gray-900 block">Gemstone:</span>
-              <span className="text-sm text-gray-600">{product.gemstone}</span>
+              <span className="text-sm text-gray-600">{product?.gemstone || 'N/A'}</span>
             </div>
             <div>
               <span className="text-sm font-medium text-gray-900 block">Weight:</span>
-              <span className="text-sm text-gray-600">{product.weight}</span>
+              <span className="text-sm text-gray-600">{product?.weight || 'N/A'}</span>
             </div>
             <div>
               <span className="text-sm font-medium text-gray-900 block">In Stock:</span>
-              <span className="text-sm text-gray-600">{product.stock} pieces</span>
+              <span className="text-sm text-gray-600">{product?.stock || 0} pieces</span>
             </div>
           </div>
 
@@ -443,14 +443,14 @@ const ProductDetail = ({ className, ...props }) => {
           >
             {activeTab === "description" && (
               <div className="prose prose-gray max-w-none">
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {product.description}
+<p className="text-lg text-gray-600 leading-relaxed">
+                  {product?.description || ''}
                 </p>
                 <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Design Philosophy</h4>
                     <p className="text-gray-600">
-                      Each piece in our collection represents the perfect balance between traditional craftsmanship and contemporary design. This {product.name.toLowerCase()} embodies our commitment to creating jewelry that transcends trends and becomes a timeless part of your collection.
+                      Each piece in our collection represents the perfect balance between traditional craftsmanship and contemporary design. This {product?.name?.toLowerCase() || 'item'} embodies our commitment to creating jewelry that transcends trends and becomes a timeless part of your collection.
                     </p>
                   </div>
                   <div>
@@ -470,23 +470,23 @@ const ProductDetail = ({ className, ...props }) => {
                   <dl className="space-y-3">
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Category:</dt>
-                      <dd className="text-gray-900">{product.category}</dd>
+                      <dd className="text-gray-900">{product?.category || 'N/A'}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Metal Type:</dt>
-                      <dd className="text-gray-900">{product.metal}</dd>
+                      <dd className="text-gray-900">{product?.metal || 'N/A'}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Gemstone:</dt>
-                      <dd className="text-gray-900">{product.gemstone}</dd>
+                      <dd className="text-gray-900">{product?.gemstone || 'N/A'}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Weight:</dt>
-                      <dd className="text-gray-900">{product.weight}</dd>
+                      <dd className="text-gray-900">{product?.weight || 'N/A'}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-600">Available Sizes:</dt>
-                      <dd className="text-gray-900">{product.sizes?.join(", ") || "One Size"}</dd>
+                      <dd className="text-gray-900">{product?.sizes?.join(", ") || "One Size"}</dd>
                     </div>
                   </dl>
                 </div>
@@ -495,11 +495,11 @@ const ProductDetail = ({ className, ...props }) => {
                   <ul className="space-y-2 text-gray-600">
                     <li className="flex items-start gap-2">
                       <ApperIcon name="Check" size={16} className="text-gold-600 mt-0.5 flex-shrink-0" />
-                      Premium {product.metal} construction
+                      Premium {product?.metal || 'metal'} construction
                     </li>
                     <li className="flex items-start gap-2">
                       <ApperIcon name="Check" size={16} className="text-gold-600 mt-0.5 flex-shrink-0" />
-                      Ethically sourced {product.gemstone.toLowerCase()} stones
+                      Ethically sourced {product?.gemstone?.toLowerCase() || 'stone'} stones
                     </li>
                     <li className="flex items-start gap-2">
                       <ApperIcon name="Check" size={16} className="text-gold-600 mt-0.5 flex-shrink-0" />
@@ -636,14 +636,14 @@ const ProductDetail = ({ className, ...props }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map((relatedProduct, index) => (
               <motion.div
-                key={relatedProduct.Id}
+key={relatedProduct?.Id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <ProductCard
                   product={relatedProduct}
-                  onAddToCart={(product) => addToCart(product.Id)}
+                  onAddToCart={(product) => addToCart(product?.Id)}
                 />
               </motion.div>
             ))}

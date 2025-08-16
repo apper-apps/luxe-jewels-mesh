@@ -6,7 +6,7 @@ export const useProducts = (category = null) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadProducts = async () => {
+const loadProducts = async () => {
     try {
       setLoading(true);
       setError(null);
@@ -18,9 +18,10 @@ export const useProducts = (category = null) => {
         data = await productService.getAll();
       }
       
-      setProducts(data);
+      setProducts(data || []);
     } catch (err) {
       setError(err.message || "Failed to load products");
+      setProducts([]);
     } finally {
       setLoading(false);
     }
@@ -45,13 +46,14 @@ export const useFeaturedProducts = (limit = 8) => {
 
   useEffect(() => {
     const loadFeaturedProducts = async () => {
-      try {
+try {
         setLoading(true);
         setError(null);
         const data = await productService.getFeatured(limit);
-        setProducts(data);
+        setProducts(data || []);
       } catch (err) {
         setError(err.message || "Failed to load featured products");
+        setProducts([]);
       } finally {
         setLoading(false);
       }
@@ -70,13 +72,14 @@ export const useNewArrivals = (limit = 8) => {
 
   useEffect(() => {
     const loadNewArrivals = async () => {
-      try {
+try {
         setLoading(true);
         setError(null);
         const data = await productService.getNewArrivals(limit);
-        setProducts(data);
+        setProducts(data || []);
       } catch (err) {
         setError(err.message || "Failed to load new arrivals");
+        setProducts([]);
       } finally {
         setLoading(false);
       }
@@ -93,14 +96,15 @@ export const useProductSearch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const search = async (query, filters = {}) => {
+const search = async (query, filters = {}) => {
     try {
       setLoading(true);
       setError(null);
       const data = await productService.search(query, filters);
-      setResults(data);
+      setResults(data || []);
     } catch (err) {
       setError(err.message || "Search failed");
+      setResults([]);
     } finally {
       setLoading(false);
     }

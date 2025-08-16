@@ -1,117 +1,421 @@
-import productsData from "@/services/mockData/products.json";
+import { toast } from 'react-toastify';
 
 class ProductService {
   constructor() {
-    this.products = [...productsData];
+    // Initialize ApperClient
+    this.getApperClient = () => {
+      const { ApperClient } = window.ApperSDK;
+      return new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+    };
+    
+    this.tableName = 'product_c';
+    this.fields = [
+      { field: { Name: "Name" } },
+      { field: { Name: "Tags" } },
+      { field: { Name: "Owner" } },
+      { field: { Name: "CreatedOn" } },
+      { field: { Name: "CreatedBy" } },
+      { field: { Name: "ModifiedOn" } },
+      { field: { Name: "ModifiedBy" } },
+      { field: { Name: "price_c" } },
+      { field: { Name: "original_price_c" } },
+      { field: { Name: "images_c" } },
+      { field: { Name: "category_c" } },
+      { field: { Name: "metal_c" } },
+      { field: { Name: "gemstone_c" } },
+      { field: { Name: "weight_c" } },
+      { field: { Name: "sizes_c" } },
+      { field: { Name: "stock_c" } },
+      { field: { Name: "description_c" } },
+      { field: { Name: "rating_c" } },
+      { field: { Name: "reviews_c" } },
+      { field: { Name: "is_new_c" } },
+      { field: { Name: "discount_c" } }
+    ];
   }
 
-  // Simulate API delay
-  delay(ms = 300) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  // Transform database record to UI format
+  transformProduct(dbProduct) {
+    if (!dbProduct) return null;
+    
+    return {
+      Id: dbProduct.Id,
+      name: dbProduct.Name || '',
+      price: parseFloat(dbProduct.price_c) || 0,
+      originalPrice: parseFloat(dbProduct.original_price_c) || 0,
+      images: dbProduct.images_c ? JSON.parse(dbProduct.images_c) : [],
+      category: dbProduct.category_c || '',
+      metal: dbProduct.metal_c || '',
+      gemstone: dbProduct.gemstone_c || '',
+      weight: dbProduct.weight_c || '',
+      sizes: dbProduct.sizes_c ? JSON.parse(dbProduct.sizes_c) : [],
+      stock: parseInt(dbProduct.stock_c) || 0,
+      description: dbProduct.description_c || '',
+      rating: parseFloat(dbProduct.rating_c) || 0,
+      reviews: parseInt(dbProduct.reviews_c) || 0,
+      isNew: dbProduct.is_new_c || false,
+      discount: parseFloat(dbProduct.discount_c) || 0
+    };
   }
 
   async getAll() {
-    await this.delay();
-    return [...this.products];
+    try {
+      const apperClient = this.getApperClient();
+      const params = {
+        fields: this.fields,
+        orderBy: [{ fieldName: "Id", sorttype: "DESC" }],
+        pagingInfo: { limit: 100, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        toast.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching products:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
   }
 
   async getById(id) {
-    await this.delay();
-    const product = this.products.find(p => p.Id === parseInt(id));
-    if (!product) {
-      throw new Error(`Product with id ${id} not found`);
+    try {
+      const apperClient = this.getApperClient();
+      const params = { fields: this.fields };
+      
+      const response = await apperClient.getRecordById(this.tableName, parseInt(id), params);
+      
+      if (!response || !response.data) {
+        return null;
+      }
+
+      return this.transformProduct(response.data);
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error(`Error fetching product with ID ${id}:`, error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return null;
     }
-    return { ...product };
   }
 
   async getByCategory(category) {
-    await this.delay();
-    return this.products.filter(p => 
-      p.category.toLowerCase() === category.toLowerCase()
-    ).map(p => ({ ...p }));
+    try {
+      const apperClient = this.getApperClient();
+      const params = {
+        fields: this.fields,
+        where: [
+          {
+            FieldName: "category_c",
+            Operator: "EqualTo",
+            Values: [category]
+          }
+        ],
+        orderBy: [{ fieldName: "Id", sorttype: "DESC" }],
+        pagingInfo: { limit: 100, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching products by category:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
   }
 
   async getFeatured(limit = 8) {
-    await this.delay();
-    return this.products
-      .filter(p => p.rating >= 4.5)
-      .slice(0, limit)
-      .map(p => ({ ...p }));
+    try {
+      const apperClient = this.getApperClient();
+      const params = {
+        fields: this.fields,
+        where: [
+          {
+            FieldName: "rating_c",
+            Operator: "GreaterThanOrEqualTo",
+            Values: ["4.5"]
+          }
+        ],
+        orderBy: [{ fieldName: "rating_c", sorttype: "DESC" }],
+        pagingInfo: { limit: limit, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching featured products:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
   }
 
   async getNewArrivals(limit = 8) {
-    await this.delay();
-    return this.products
-      .filter(p => p.isNew)
-      .slice(0, limit)
-      .map(p => ({ ...p }));
+    try {
+      const apperClient = this.getApperClient();
+      const params = {
+        fields: this.fields,
+        where: [
+          {
+            FieldName: "is_new_c",
+            Operator: "EqualTo",
+            Values: [true]
+          }
+        ],
+        orderBy: [{ fieldName: "CreatedOn", sorttype: "DESC" }],
+        pagingInfo: { limit: limit, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching new arrivals:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
   }
 
   async getSaleItems(limit = 8) {
-    await this.delay();
-    return this.products
-      .filter(p => p.discount > 0)
-      .slice(0, limit)
-      .map(p => ({ ...p }));
+    try {
+      const apperClient = this.getApperClient();
+      const params = {
+        fields: this.fields,
+        where: [
+          {
+            FieldName: "discount_c",
+            Operator: "GreaterThan",
+            Values: ["0"]
+          }
+        ],
+        orderBy: [{ fieldName: "discount_c", sorttype: "DESC" }],
+        pagingInfo: { limit: limit, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching sale items:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
   }
 
   async search(query, filters = {}) {
-    await this.delay();
-    let results = [...this.products];
+    try {
+      const apperClient = this.getApperClient();
+      const whereConditions = [];
 
-    // Text search
-    if (query) {
-      const searchTerm = query.toLowerCase();
-      results = results.filter(p =>
-        p.name.toLowerCase().includes(searchTerm) ||
-        p.category.toLowerCase().includes(searchTerm) ||
-        p.metal.toLowerCase().includes(searchTerm) ||
-        p.gemstone.toLowerCase().includes(searchTerm) ||
-        p.description.toLowerCase().includes(searchTerm)
-      );
+      // Text search across multiple fields
+      if (query) {
+        whereConditions.push({
+          FieldName: "Name",
+          Operator: "Contains",
+          Values: [query]
+        });
+      }
+
+      // Apply filters
+      if (filters.category && filters.category.length > 0) {
+        whereConditions.push({
+          FieldName: "category_c",
+          Operator: "Includes",
+          Values: filters.category
+        });
+      }
+
+      if (filters.metal && filters.metal.length > 0) {
+        whereConditions.push({
+          FieldName: "metal_c",
+          Operator: "Includes",
+          Values: filters.metal
+        });
+      }
+
+      if (filters.gemstone && filters.gemstone.length > 0) {
+        whereConditions.push({
+          FieldName: "gemstone_c",
+          Operator: "Includes",
+          Values: filters.gemstone
+        });
+      }
+
+      if (filters.price && Array.isArray(filters.price) && filters.price.length === 2) {
+        const [minPrice, maxPrice] = filters.price;
+        whereConditions.push({
+          FieldName: "price_c",
+          Operator: "GreaterThanOrEqualTo",
+          Values: [minPrice.toString()]
+        });
+        whereConditions.push({
+          FieldName: "price_c",
+          Operator: "LessThanOrEqualTo",
+          Values: [maxPrice.toString()]
+        });
+      }
+
+      const params = {
+        fields: this.fields,
+        where: whereConditions,
+        orderBy: [{ fieldName: "Id", sorttype: "DESC" }],
+        pagingInfo: { limit: 100, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error searching products:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
     }
-
-    // Apply filters
-    if (filters.category && filters.category.length > 0) {
-      results = results.filter(p => 
-        filters.category.includes(p.category)
-      );
-    }
-
-    if (filters.metal && filters.metal.length > 0) {
-      results = results.filter(p => 
-        filters.metal.includes(p.metal)
-      );
-    }
-
-    if (filters.gemstone && filters.gemstone.length > 0) {
-      results = results.filter(p => 
-        filters.gemstone.includes(p.gemstone)
-      );
-    }
-
-    if (filters.price && Array.isArray(filters.price)) {
-      const [minPrice, maxPrice] = filters.price;
-      results = results.filter(p => 
-        p.price >= minPrice && p.price <= maxPrice
-      );
-    }
-
-    return results.map(p => ({ ...p }));
   }
 
   async getRelated(productId, limit = 4) {
-    await this.delay();
-    const product = this.products.find(p => p.Id === parseInt(productId));
-    if (!product) return [];
+    try {
+      // First get the product to find its category
+      const product = await this.getById(productId);
+      if (!product) return [];
 
-    return this.products
-      .filter(p => 
-        p.Id !== parseInt(productId) && 
-        (p.category === product.category || p.metal === product.metal)
-      )
-      .slice(0, limit)
-      .map(p => ({ ...p }));
+      const apperClient = this.getApperClient();
+      const params = {
+        fields: this.fields,
+        whereGroups: [
+          {
+            operator: "OR",
+            subGroups: [
+              {
+                conditions: [
+                  {
+                    fieldName: "category_c",
+                    operator: "EqualTo",
+                    values: [product.category]
+                  }
+                ],
+                operator: "AND"
+              },
+              {
+                conditions: [
+                  {
+                    fieldName: "metal_c",
+                    operator: "EqualTo",
+                    values: [product.metal]
+                  }
+                ],
+                operator: "AND"
+              }
+            ]
+          }
+        ],
+        where: [
+          {
+            FieldName: "Id",
+            Operator: "NotEqualTo",
+            Values: [productId]
+          }
+        ],
+        orderBy: [{ fieldName: "rating_c", sorttype: "DESC" }],
+        pagingInfo: { limit: limit, offset: 0 }
+      };
+      
+      const response = await apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (!response.data || response.data.length === 0) {
+        return [];
+      }
+
+      return response.data.map(product => this.transformProduct(product));
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching related products:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
   }
 
   sortProducts(products, sortBy) {

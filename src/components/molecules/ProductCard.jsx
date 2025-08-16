@@ -28,7 +28,7 @@ const [imageLoaded, setImageLoaded] = useState(false);
   };
   
   const handleProductClick = () => {
-    navigate(`/product/${product.Id}`);
+navigate(`/product/${product?.Id}`);
   };
   
   const handleAddToCart = (e) => {
@@ -108,17 +108,17 @@ const [imageLoaded, setImageLoaded] = useState(false);
           
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
-            {product.isNew && (
+{product?.isNew && (
               <Badge variant="primary" className="shadow-md">
                 New
               </Badge>
             )}
-            {product.discount && (
+            {product?.discount && (
               <Badge variant="error" className="shadow-md">
                 -{product.discount}%
               </Badge>
             )}
-            {product.stock <= 5 && product.stock > 0 && (
+            {product?.stock <= 5 && product.stock > 0 && (
               <Badge variant="warning" className="shadow-md">
                 Low Stock
               </Badge>
@@ -165,19 +165,19 @@ const [imageLoaded, setImageLoaded] = useState(false);
         {/* Product Info */}
         <div className="p-4 flex-1 flex flex-col">
           <div className="mb-2">
-            <h3 className="font-medium text-gray-900 line-clamp-2 group-hover:text-gold-700 transition-colors">
-              {product.name}
+<h3 className="font-medium text-gray-900 line-clamp-2 group-hover:text-gold-700 transition-colors">
+              {product?.name || 'Unknown Product'}
             </h3>
-            <p className="text-sm text-gray-600 mt-1">{product.category}</p>
+            <p className="text-sm text-gray-600 mt-1">{product?.category || ''}</p>
           </div>
           
           <div className="flex items-center gap-2 mb-3">
-            {product.metal && (
+            {product?.metal && (
               <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
                 {product.metal}
               </span>
             )}
-            {product.gemstone && (
+            {product?.gemstone && (
               <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
                 {product.gemstone}
               </span>
@@ -188,9 +188,9 @@ const [imageLoaded, setImageLoaded] = useState(false);
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-lg font-bold text-gray-900">
-                  {formatPrice(product.price)}
+                  {formatPrice(product?.price || 0)}
                 </span>
-                {product.originalPrice && product.originalPrice > product.price && (
+                {product?.originalPrice && product.originalPrice > product.price && (
                   <span className="text-sm text-gray-500 line-through ml-2">
                     {formatPrice(product.originalPrice)}
                   </span>
@@ -199,8 +199,8 @@ const [imageLoaded, setImageLoaded] = useState(false);
               
               <div className="flex items-center gap-1 text-xs text-gray-500">
                 <ApperIcon name="Star" size={12} className="fill-yellow-400 text-yellow-400" />
-                <span>{product.rating || "4.5"}</span>
-                <span>({product.reviews || "24"})</span>
+                <span>{product?.rating || "4.5"}</span>
+                <span>({product?.reviews || "24"})</span>
               </div>
             </div>
           </div>

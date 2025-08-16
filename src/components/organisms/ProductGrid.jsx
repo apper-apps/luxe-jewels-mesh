@@ -136,7 +136,7 @@ const ProductGrid = ({
         <AnimatePresence mode="wait">
           {currentProducts.map((product, index) => (
             <motion.div
-              key={product.Id}
+key={product?.Id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}

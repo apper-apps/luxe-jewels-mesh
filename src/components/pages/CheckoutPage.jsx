@@ -59,13 +59,13 @@ function CheckoutPage() {
   ]
 
   // Calculate totals
-  const getProductById = (productId) => {
-    return products.find(p => p.Id === productId)
+const getProductById = (productId) => {
+    return (products || []).find(p => p?.Id == productId)
   }
 
   const calculateSubtotal = () => {
-    return cartItems.reduce((sum, item) => {
-      const product = getProductById(item.productId)
+return (cartItems || []).reduce((sum, item) => {
+      const product = getProductById(item?.productId)
       return sum + (product?.price || 0) * item.quantity
     }, 0)
   }
@@ -600,8 +600,8 @@ function CheckoutPage() {
                     <div className="mb-6">
                       <h3 className="font-medium text-gray-900 mb-4">Order Items</h3>
                       <div className="space-y-3">
-                        {cartItems.map((item) => {
-                          const product = getProductById(item.productId)
+{(cartItems || []).map((item) => {
+                          const product = getProductById(item?.productId)
                           if (!product) return null
                           
                           return (

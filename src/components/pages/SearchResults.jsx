@@ -69,7 +69,7 @@ const SearchResults = ({ className, ...props }) => {
     search(query, {});
   };
 
-  const handleAddToCart = (product) => {
+const handleAddToCart = (product) => {
     addToCart(product.Id);
   };
 

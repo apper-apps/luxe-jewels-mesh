@@ -59,7 +59,7 @@ const FilterSidebar = ({
   const appliedCount = getAppliedFiltersCount();
   
 const filterSections = [
-    {
+{
       key: 'category',
       title: 'Category',
       options: ['Rings', 'Necklaces', 'Earrings', 'Bracelets', 'Mangalsutras', 'Bangles', 'Pendants', 'Maang Tikkas', 'Nose Pins', 'Anklets', 'Toe Rings', 'Diamond Jewelry', 'Gold Coins', 'Gemstone Jewelry', 'Watches']
@@ -72,7 +72,7 @@ const filterSections = [
     {
       key: 'gemstone',
       title: 'Gemstone',
-      options: ['Diamond', 'Ruby', 'Sapphire', 'Emerald', 'Pearl', 'Polki', 'Kundan', 'Coral', 'Turquoise', 'Amethyst', 'Topaz', 'Garnet']
+      options: ['Diamond', 'Ruby', 'Sapphire', 'Emerald', 'Pearl', 'Polki', 'Kundan', 'Coral', 'Turquoise', 'Amethyst', 'Topaz', 'Garnet', 'None']
     },
     {
       key: 'size',

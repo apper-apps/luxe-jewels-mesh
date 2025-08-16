@@ -7,23 +7,24 @@ export const useCart = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadCart = async () => {
+const loadCart = async () => {
     try {
       setLoading(true);
       setError(null);
       const data = await cartService.getAll();
-      setCartItems(data);
+      setCartItems(data || []);
     } catch (err) {
       setError(err.message || "Failed to load cart");
+      setCartItems([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const addToCart = async (productId, quantity = 1, size = null) => {
+const addToCart = async (productId, quantity = 1, size = null) => {
     try {
       const updatedCart = await cartService.addItem(productId, quantity, size);
-      setCartItems(updatedCart);
+      setCartItems(updatedCart || []);
       toast.success("Item added to cart!");
       return true;
     } catch (err) {
@@ -32,10 +33,10 @@ export const useCart = () => {
     }
   };
 
-  const updateQuantity = async (productId, quantity) => {
+const updateQuantity = async (productId, quantity) => {
     try {
       const updatedCart = await cartService.updateQuantity(productId, quantity);
-      setCartItems(updatedCart);
+      setCartItems(updatedCart || []);
       return true;
     } catch (err) {
       toast.error("Failed to update quantity");
@@ -44,9 +45,9 @@ export const useCart = () => {
   };
 
   const removeItem = async (productId) => {
-    try {
+try {
       const updatedCart = await cartService.removeItem(productId);
-      setCartItems(updatedCart);
+      setCartItems(updatedCart || []);
       toast.success("Item removed from cart");
       return true;
     } catch (err) {
@@ -56,9 +57,9 @@ export const useCart = () => {
   };
 
   const clearCart = async () => {
-    try {
+try {
       const updatedCart = await cartService.clear();
-      setCartItems(updatedCart);
+      setCartItems(updatedCart || []);
       toast.success("Cart cleared");
       return true;
     } catch (err) {
@@ -67,8 +68,8 @@ export const useCart = () => {
     }
   };
 
-  const getItemCount = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+const getItemCount = () => {
+    return (cartItems || []).reduce((total, item) => total + (item?.quantity || 0), 0);
   };
 
   useEffect(() => {
