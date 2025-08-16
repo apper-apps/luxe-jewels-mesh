@@ -10,10 +10,10 @@ const Button = forwardRef(({
 }, ref) => {
   const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2";
   
-  const variants = {
-    primary: "bg-gradient-to-r from-gold-500 to-gold-600 text-white hover:from-gold-600 hover:to-gold-700 shadow-md hover:shadow-lg focus:ring-gold-500",
-    secondary: "bg-white border-2 border-gold-500 text-gold-700 hover:bg-gold-50 focus:ring-gold-500",
-    outline: "border-2 border-gray-300 text-gray-700 hover:border-gold-500 hover:text-gold-700 focus:ring-gold-500",
+const variants = {
+    primary: "bg-gradient-to-r from-blue-600 to-gold-600 text-white hover:from-blue-700 hover:to-gold-700 shadow-md hover:shadow-lg focus:ring-blue-500",
+    secondary: "bg-white border-2 border-blue-500 text-blue-700 hover:bg-blue-50 focus:ring-blue-500",
+    outline: "border-2 border-gray-300 text-gray-700 hover:border-blue-500 hover:text-blue-700 focus:ring-blue-500",
     ghost: "text-gray-700 hover:bg-gray-100 focus:ring-gray-500"
   };
   

@@ -61,11 +61,11 @@ const Header = ({ cartCount = 0, onCartClick, className, ...props }) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center">
+<div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-gold-500 rounded-lg flex items-center justify-center">
               <ApperIcon name="Gem" size={20} className="text-white" />
             </div>
             <span className="font-display text-xl lg:text-2xl font-bold text-gray-900">
-              Luxe Jewels
+              SANDOOK LUXE
             </span>
           </Link>
           
@@ -78,9 +78,9 @@ const Header = ({ cartCount = 0, onCartClick, className, ...props }) => {
                 onMouseEnter={() => setActiveSubmenu(category.name)}
                 onMouseLeave={() => setActiveSubmenu(null)}
               >
-                <Link
+<Link
                   to={`/category/${category.name.toLowerCase()}`}
-                  className="text-gray-700 hover:text-gold-600 font-medium transition-colors py-2"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2"
                 >
                   {category.name}
                 </Link>
@@ -98,9 +98,9 @@ const Header = ({ cartCount = 0, onCartClick, className, ...props }) => {
                       <div className="space-y-2">
                         {category.items.map((item) => (
                           <Link
-                            key={item}
+key={item}
                             to={`/category/${category.name.toLowerCase()}/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="block text-sm text-gray-600 hover:text-gold-600 py-1 transition-colors"
+                            className="block text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
                           >
                             {item}
                           </Link>
@@ -112,20 +112,19 @@ const Header = ({ cartCount = 0, onCartClick, className, ...props }) => {
               </div>
             ))}
             
-            <Link
+<Link
               to="/collections"
-              className="text-gray-700 hover:text-gold-600 font-medium transition-colors"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Collections
             </Link>
             
             <Link
-              to="/new-arrivals"
-              className="text-gray-700 hover:text-gold-600 font-medium transition-colors"
+to="/new-arrivals"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               New Arrivals
             </Link>
-            
             <Link
               to="/sale"
               className="text-red-600 hover:text-red-700 font-medium transition-colors"
@@ -147,27 +146,27 @@ const Header = ({ cartCount = 0, onCartClick, className, ...props }) => {
             
             {/* Actions */}
             <div className="flex items-center gap-2">
-              {/* Mobile Search */}
-              <button className="md:hidden p-2 text-gray-700 hover:text-gold-600 transition-colors">
+{/* Mobile Search */}
+              <button className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors">
                 <ApperIcon name="Search" size={20} />
               </button>
               
-              {/* Wishlist */}
-              <button className="hidden sm:block p-2 text-gray-700 hover:text-gold-600 transition-colors">
+{/* Wishlist */}
+              <button className="hidden sm:block p-2 text-gray-700 hover:text-blue-600 transition-colors">
                 <ApperIcon name="Heart" size={20} />
               </button>
               
-              {/* Cart */}
+{/* Cart */}
               <button
                 onClick={onCartClick}
-                className="relative p-2 text-gray-700 hover:text-gold-600 transition-colors"
+                className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <ApperIcon name="ShoppingBag" size={20} />
                 {cartCount > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-gold-500 to-gold-600 text-white text-xs rounded-full flex items-center justify-center font-medium"
+                    className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-blue-500 to-gold-500 text-white text-xs rounded-full flex items-center justify-center font-medium"
                   >
                     {cartCount > 99 ? "99+" : cartCount}
                   </motion.span>

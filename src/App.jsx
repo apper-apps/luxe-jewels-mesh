@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Header from "@/components/organisms/Header";
-import Footer from "@/components/organisms/Footer";
-import CartDrawer from "@/components/organisms/CartDrawer";
-import Home from "@/components/pages/Home";
-import CategoryPage from "@/components/pages/CategoryPage";
-import ProductDetail from "@/components/pages/ProductDetail";
-import SearchResults from "@/components/pages/SearchResults";
+import CheckoutPage from "@/components/pages/CheckoutPage";
 import { useCart } from "@/hooks/useCart";
 import { useProducts } from "@/hooks/useProducts";
-
+import SearchResults from "@/components/pages/SearchResults";
+import CategoryPage from "@/components/pages/CategoryPage";
+import ProductDetail from "@/components/pages/ProductDetail";
+import Home from "@/components/pages/Home";
+import CartDrawer from "@/components/organisms/CartDrawer";
+import Header from "@/components/organisms/Header";
+import Footer from "@/components/organisms/Footer";
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cartItems, updateQuantity, removeItem, getItemCount } = useCart();
@@ -39,21 +39,22 @@ function App() {
         />
         
         <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/category/:category" element={<CategoryPage />} />
-            <Route path="/products" element={<CategoryPage />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/search" element={<SearchResults />} />
-            <Route path="/new-arrivals" element={<CategoryPage />} />
-            <Route path="/collections" element={<CategoryPage />} />
-            <Route path="/sale" element={<CategoryPage />} />
-          </Routes>
-        </main>
+<Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
+          <Route path="/products" element={<CategoryPage />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/new-arrivals" element={<CategoryPage />} />
+          <Route path="/collections" element={<CategoryPage />} />
+          <Route path="/sale" element={<CategoryPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+        </Routes>
+      </main>
         
         <Footer />
         
-        <CartDrawer
+<CartDrawer
           isOpen={isCartOpen}
           onClose={handleCartClose}
           cartItems={cartItems}
@@ -64,8 +65,6 @@ function App() {
         />
         
         <ToastContainer
-          position="top-right"
-          autoClose={3000}
           hideProgressBar={false}
           newestOnTop
           closeOnClick

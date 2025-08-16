@@ -34,7 +34,7 @@ const Footer = ({ className, ...props }) => {
       { name: "Shipping Info", href: "/shipping" },
       { name: "FAQ", href: "/faq" }
     ],
-    "About Luxe Jewels": [
+"About SANDOOK LUXE": [
       { name: "Our Story", href: "/about" },
       { name: "Craftsmanship", href: "/craftsmanship" },
       { name: "Sustainability", href: "/sustainability" },
@@ -81,8 +81,8 @@ const Footer = ({ className, ...props }) => {
                   type="email"
                   placeholder="Enter your email address"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gold-500"
+onChange={(e) => setEmail(e.target.value)}
+                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-blue-500"
                   required
                 />
               </div>
@@ -113,12 +113,12 @@ const Footer = ({ className, ...props }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center">
+<Link to="/" className="flex items-center gap-2 mb-6">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-gold-500 rounded-lg flex items-center justify-center">
                 <ApperIcon name="Gem" size={20} className="text-white" />
               </div>
               <span className="font-display text-xl font-bold">
-                Luxe Jewels
+                SANDOOK LUXE
               </span>
             </Link>
             
@@ -128,17 +128,17 @@ const Footer = ({ className, ...props }) => {
             </p>
             
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <ApperIcon name="Phone" size={16} className="text-gold-500" />
-                <span className="text-sm">1-800-LUXE-JEWELS</span>
+<div className="flex items-center gap-3">
+                <ApperIcon name="Phone" size={16} className="text-blue-500" />
+                <span className="text-sm">1-800-SANDOOK-LUXE</span>
               </div>
               <div className="flex items-center gap-3">
-                <ApperIcon name="Mail" size={16} className="text-gold-500" />
-                <span className="text-sm">hello@luxejewels.com</span>
+                <ApperIcon name="Mail" size={16} className="text-blue-500" />
+                <span className="text-sm">hello@sandookluxe.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <ApperIcon name="MapPin" size={16} className="text-gold-500" />
-                <span className="text-sm">123 Jewelry District, NYC</span>
+                <ApperIcon name="MapPin" size={16} className="text-blue-500" />
+                <span className="text-sm">123 Luxury District, NYC</span>
               </div>
             </div>
           </div>
@@ -151,8 +151,8 @@ const Footer = ({ className, ...props }) => {
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
-                      to={link.href}
-                      className="text-gray-400 hover:text-gold-500 transition-colors text-sm"
+to={link.href}
+                      className="text-gray-400 hover:text-blue-500 transition-colors text-sm"
                     >
                       {link.name}
                     </Link>
@@ -171,8 +171,8 @@ const Footer = ({ className, ...props }) => {
             {/* Copyright */}
             <div className="text-sm text-gray-400">
               © 2024 Luxe Jewels. All rights reserved. | 
-              <Link to="/privacy" className="hover:text-gold-500 transition-colors ml-1">Privacy Policy</Link> | 
-              <Link to="/terms" className="hover:text-gold-500 transition-colors ml-1">Terms of Service</Link>
+<Link to="/privacy" className="hover:text-blue-500 transition-colors ml-1">Privacy Policy</Link> | 
+              <Link to="/terms" className="hover:text-blue-500 transition-colors ml-1">Terms of Service</Link>
             </div>
             
             {/* Social Links */}
@@ -184,8 +184,8 @@ const Footer = ({ className, ...props }) => {
                     key={social.name}
                     href={social.href}
                     whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-gold-500 hover:bg-gray-700 transition-all"
+whileTap={{ scale: 0.95 }}
+                    className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-gray-700 transition-all"
                     title={social.name}
                   >
                     <ApperIcon name={social.icon} size={16} />

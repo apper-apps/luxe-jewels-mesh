@@ -86,12 +86,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+  background: linear-gradient(135deg, #3B82F6 0%, #D4AF37 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #B8941F 0%, #9C7916 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #B8941F 100%);
 }
 
 /* Image zoom effect */

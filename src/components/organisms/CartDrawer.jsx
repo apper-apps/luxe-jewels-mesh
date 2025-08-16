@@ -168,10 +168,10 @@ const CartDrawer = ({
                 
                 {/* Actions */}
                 <div className="space-y-3">
-                  <Button 
+<Button 
                     onClick={onCheckout}
                     size="lg" 
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-blue-600 to-gold-600 hover:from-blue-700 hover:to-gold-700"
                   >
                     <ApperIcon name="CreditCard" size={16} className="mr-2" />
                     Secure Checkout
