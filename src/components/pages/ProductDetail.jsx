@@ -1,17 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "react-toastify";
-import { cn } from "@/utils/cn";
-import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
-import Badge from "@/components/atoms/Badge";
-import { Card, CardContent } from "@/components/atoms/Card";
-import ProductCard from "@/components/molecules/ProductCard";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import productService from "@/services/api/productService";
-import { useCart } from "@/hooks/useCart";
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { toast } from 'react-toastify'
+import { cn } from '@/utils/cn'
+import ApperIcon from '@/components/ApperIcon'
+import Button from '@/components/atoms/Button'
+import Badge from '@/components/atoms/Badge'
+import { Card, CardContent } from '@/components/atoms/Card'
+import ProductCard from '@/components/molecules/ProductCard'
+import Loading from '@/components/ui/Loading'
+import Error from '@/components/ui/Error'
+import productService from '@/services/api/productService'
+import { useCart } from '@/hooks/useCart'
+
+// Image component with error handling
+const ProductImage = ({ src, alt, className, ...props }) => {
+  const [imageError, setImageError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
+  if (imageError) {
+    return (
+      <div className={cn("flex flex-col items-center justify-center bg-gray-100 text-gray-400", className)}>
+        <ApperIcon name="ImageOff" className="w-12 h-12 mb-2" />
+        <p className="text-sm text-center">Image unavailable</p>
+        {retryCount < 2 && (
+          <button
+            onClick={() => {
+              setImageError(false);
+              setRetryCount(prev => prev + 1);
+            }}
+            className="text-xs text-gold-600 hover:text-gold-700 mt-2"
+          >
+            Retry loading
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onError={() => setImageError(true)}
+      key={retryCount}
+      {...props}
+    />
+  );
+};
 
 const ProductDetail = ({ className, ...props }) => {
   const { id } = useParams();

@@ -15,7 +15,9 @@ const ProductCard = ({
   ...props 
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
+const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
   const navigate = useNavigate();
   
   const formatPrice = (price) => {
@@ -53,25 +55,54 @@ const ProductCard = ({
       <Card className="product-card h-full flex flex-col">
         {/* Image Container */}
         <div className="relative aspect-square overflow-hidden bg-gray-100">
-          {!imageLoaded && (
+{!imageLoaded && !imageError && (
             <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 shimmer" />
           )}
           
-          <img
-            src={product.images?.[0]}
-            alt={product.name}
-            className={cn(
-              "product-image-primary w-full h-full object-cover transition-opacity duration-300",
-              imageLoaded ? "opacity-100" : "opacity-0"
-            )}
-            onLoad={() => setImageLoaded(true)}
-          />
+          {imageError ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 text-gray-400">
+              <ApperIcon name="ImageOff" className="w-8 h-8 mb-2" />
+              <p className="text-sm text-center px-2">Image unavailable</p>
+              {retryCount < 2 && (
+                <button
+                  onClick={() => {
+                    setImageError(false);
+                    setRetryCount(prev => prev + 1);
+                  }}
+                  className="text-xs text-gold-600 hover:text-gold-700 mt-1"
+                >
+                  Retry
+                </button>
+              )}
+            </div>
+          ) : (
+            <img
+              src={product.images?.[0]}
+              alt={product.name}
+              className={cn(
+                "product-image-primary w-full h-full object-cover transition-opacity duration-300",
+                imageLoaded ? "opacity-100" : "opacity-0"
+              )}
+              onLoad={() => {
+                setImageLoaded(true);
+                setImageError(false);
+              }}
+              onError={() => {
+                setImageLoaded(false);
+                setImageError(true);
+              }}
+              key={retryCount}
+            />
+          )}
           
-          {product.images?.[1] && (
+{product.images?.[1] && !imageError && (
             <img
               src={product.images[1]}
               alt={product.name}
               className="product-image-secondary w-full h-full object-cover"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
             />
           )}
           
