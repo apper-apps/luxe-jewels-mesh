@@ -11,33 +11,41 @@ const Header = ({ cartCount = 0, onCartClick, className, ...props }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const navigate = useNavigate();
   
-  const searchSuggestions = [
+const searchSuggestions = [
     "Diamond Rings",
-    "Gold Necklace",
-    "Pearl Earrings",
-    "Silver Bracelet",
-    "Wedding Rings",
-    "Engagement Rings",
-    "Tennis Bracelet",
-    "Statement Necklace"
+    "Gold Mangalsutra",
+    "Temple Earrings",
+    "Kundan Necklace",
+    "Traditional Bangles",
+    "Maang Tikka",
+    "Gold Nose Pin",
+    "Gemstone Pendants"
   ];
   
   const categories = [
     {
       name: "Rings",
-      items: ["Engagement Rings", "Wedding Bands", "Fashion Rings", "Stackable Rings"]
+      items: ["Engagement Rings", "Wedding Bands", "Fashion Rings", "Toe Rings"]
     },
     {
       name: "Necklaces",
-      items: ["Diamond Necklaces", "Gold Chains", "Pearl Necklaces", "Statement Pieces"]
+      items: ["Diamond Necklaces", "Gold Chains", "Temple Jewelry", "Choker Sets"]
     },
     {
       name: "Earrings",
-      items: ["Stud Earrings", "Drop Earrings", "Hoop Earrings", "Chandelier Earrings"]
+      items: ["Jhumkas", "Chandbali", "Stud Earrings", "Temple Earrings"]
     },
     {
-      name: "Bracelets",
-      items: ["Tennis Bracelets", "Gold Bracelets", "Charm Bracelets", "Bangles"]
+      name: "Bridal Jewelry",
+      items: ["Mangalsutras", "Maang Tikkas", "Bridal Sets", "Wedding Collections"]
+    },
+    {
+      name: "Traditional",
+      items: ["Bangles", "Nose Pins", "Anklets", "Temple Jewelry"]
+    },
+    {
+      name: "Premium",
+      items: ["Diamond Jewelry", "Gold Coins", "Gemstone Jewelry", "Designer Collections"]
     }
   ];
   

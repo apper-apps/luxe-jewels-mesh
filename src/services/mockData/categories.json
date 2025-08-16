@@ -11,34 +11,97 @@
     "name": "Necklaces",
     "slug": "necklaces",
     "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=300&fit=crop",
-    "productCount": 89
+    "productCount": 189
   },
   {
     "Id": 3,
     "name": "Earrings",
     "slug": "earrings",
     "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=300&fit=crop",
-    "productCount": 124
+    "productCount": 234
   },
   {
     "Id": 4,
     "name": "Bracelets",
     "slug": "bracelets",
     "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop",
-    "productCount": 67
+    "productCount": 98
   },
   {
     "Id": 5,
-    "name": "Watches",
-    "slug": "watches",
-    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
-    "productCount": 43
+    "name": "Mangalsutras",
+    "slug": "mangalsutras",
+    "image": "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400&h=300&fit=crop",
+    "productCount": 67
   },
   {
     "Id": 6,
+    "name": "Bangles",
+    "slug": "bangles",
+    "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=300&fit=crop",
+    "productCount": 145
+  },
+  {
+    "Id": 7,
     "name": "Pendants",
     "slug": "pendants",
     "image": "https://images.unsplash.com/photo-1611652022313-8cedfbe7739a?w=400&h=300&fit=crop",
-    "productCount": 52
+    "productCount": 112
+  },
+  {
+    "Id": 8,
+    "name": "Maang Tikkas",
+    "slug": "maang-tikkas",
+    "image": "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=400&h=300&fit=crop",
+    "productCount": 45
+  },
+  {
+    "Id": 9,
+    "name": "Nose Pins",
+    "slug": "nose-pins",
+    "image": "https://images.unsplash.com/photo-1611652022313-8cedfbe7739a?w=400&h=300&fit=crop",
+    "productCount": 78
+  },
+  {
+    "Id": 10,
+    "name": "Anklets",
+    "slug": "anklets",
+    "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop",
+    "productCount": 56
+  },
+  {
+    "Id": 11,
+    "name": "Toe Rings",
+    "slug": "toe-rings",
+    "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=300&fit=crop",
+    "productCount": 34
+  },
+  {
+    "Id": 12,
+    "name": "Diamond Jewelry",
+    "slug": "diamond-jewelry",
+    "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop",
+    "productCount": 89
+  },
+  {
+    "Id": 13,
+    "name": "Gold Coins",
+    "slug": "gold-coins",
+    "image": "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=300&fit=crop",
+    "productCount": 23
+  },
+  {
+    "Id": 14,
+    "name": "Gemstone Jewelry",
+    "slug": "gemstone-jewelry",
+    "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=300&fit=crop",
+    "productCount": 156
+  },
+  {
+    "Id": 15,
+    "name": "Watches",
+    "slug": "watches",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
+    "productCount": 67
   }
 ]

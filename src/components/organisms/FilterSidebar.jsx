@@ -58,31 +58,31 @@ const FilterSidebar = ({
   
   const appliedCount = getAppliedFiltersCount();
   
-  const filterSections = [
+const filterSections = [
     {
       key: 'category',
       title: 'Category',
-      options: ['Rings', 'Necklaces', 'Earrings', 'Bracelets', 'Watches', 'Pendants']
+      options: ['Rings', 'Necklaces', 'Earrings', 'Bracelets', 'Mangalsutras', 'Bangles', 'Pendants', 'Maang Tikkas', 'Nose Pins', 'Anklets', 'Toe Rings', 'Diamond Jewelry', 'Gold Coins', 'Gemstone Jewelry', 'Watches']
     },
     {
       key: 'metal',
       title: 'Metal Type',
-      options: ['Gold', 'Silver', 'Platinum', 'Rose Gold', 'White Gold', 'Titanium']
+      options: ['Gold', 'Silver', 'Platinum', 'Rose Gold', 'White Gold', 'Kundan', 'Meenakari', 'Antique Gold']
     },
     {
       key: 'gemstone',
       title: 'Gemstone',
-      options: ['Diamond', 'Ruby', 'Sapphire', 'Emerald', 'Pearl', 'Amethyst', 'Topaz', 'Opal']
+      options: ['Diamond', 'Ruby', 'Sapphire', 'Emerald', 'Pearl', 'Polki', 'Kundan', 'Coral', 'Turquoise', 'Amethyst', 'Topaz', 'Garnet']
     },
     {
       key: 'size',
       title: 'Size',
-      options: ['XS', 'S', 'M', 'L', 'XL', 'One Size']
+      options: ['XS', 'S', 'M', 'L', 'XL', 'Adjustable', 'One Size']
     },
     {
       key: 'brand',
       title: 'Brand',
-      options: ['Luxe Collection', 'Heritage Line', 'Modern Classics', 'Artisan Craft', 'Elite Series']
+      options: ['Heritage Collection', 'Temple Jewelry', 'Bridal Elegance', 'Contemporary Craft', 'Royal Traditions', 'Designer Series']
     }
   ];
   

@@ -122,17 +122,26 @@ const CategoryPage = ({ className, ...props }) => {
     return category.charAt(0).toUpperCase() + category.slice(1);
   };
 
-  const getCategoryDescription = () => {
+const getCategoryDescription = () => {
     const descriptions = {
-      rings: "Discover our exquisite collection of rings, from elegant engagement rings to fashion-forward statement pieces.",
-      necklaces: "Explore beautiful necklaces that add elegance and sophistication to any outfit.",
-      earrings: "Find the perfect earrings to complement your style, from delicate studs to dramatic drops.",
-      bracelets: "Browse our stunning bracelet collection, featuring timeless designs and modern innovations.",
-      watches: "Discover luxury timepieces that combine precision engineering with exceptional design.",
-      pendants: "Elegant pendants that make perfect gifts or personal treasures."
+      rings: "Discover our exquisite collection of rings, from elegant engagement rings to fashion-forward statement pieces and traditional toe rings.",
+      necklaces: "Explore beautiful necklaces that add elegance and sophistication to any outfit, from delicate chains to elaborate temple jewelry.",
+      earrings: "Find the perfect earrings to complement your style, from traditional jhumkas and chandbali to modern studs and statement pieces.",
+      bracelets: "Browse our stunning bracelet collection, featuring timeless designs and modern innovations in gold, silver, and precious stones.",
+      mangalsutras: "Sacred symbols of marriage, our mangalsutra collection combines traditional significance with contemporary elegance for the modern bride.",
+      bangles: "Traditional Indian bangles in gold, silver, and designer patterns - essential accessories that celebrate heritage and style.",
+      pendants: "Elegant pendants featuring religious motifs, nature-inspired designs, and contemporary patterns - perfect for gifting or personal treasures.",
+      "maang-tikkas": "Graceful forehead jewelry that completes your traditional look - from simple designs to elaborate bridal maang tikkas.",
+      "nose-pins": "Delicate nose jewelry in traditional and modern styles, crafted in gold and silver with precious stone accents.",
+      anklets: "Beautiful anklets and payals that add musical charm to your steps, available in traditional and contemporary designs.",
+      "toe-rings": "Traditional toe rings symbolizing marital bliss, crafted in silver and gold with intricate patterns and comfort fit.",
+      "diamond-jewelry": "Luxurious diamond collection featuring certified diamonds in contemporary and classic settings for special occasions.",
+      "gold-coins": "Investment-grade gold coins in various weights, perfect for festivals, gifts, and building your precious metals portfolio.",
+      "gemstone-jewelry": "Vibrant gemstone jewelry featuring rubies, emeralds, sapphires, and semi-precious stones in traditional and modern designs.",
+      watches: "Discover luxury timepieces that combine precision engineering with exceptional design, perfect for gifting or personal collection."
     };
     
-    return descriptions[category] || "Discover our complete collection of luxury jewelry pieces.";
+    return descriptions[category] || "Discover our complete collection of luxury jewelry pieces that celebrate tradition and embrace modern elegance.";
   };
 
   if (loading) {
