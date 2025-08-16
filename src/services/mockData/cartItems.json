@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "productId": "1",
+    "quantity": 1,
+    "size": "7",
+    "addedAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "productId": "6",
+    "quantity": 2,
+    "size": "One Size",
+    "addedAt": "2024-01-15T11:45:00Z"
+  }
+]

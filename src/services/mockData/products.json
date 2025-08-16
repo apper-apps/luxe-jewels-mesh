@@ -1,0 +1,325 @@
+[
+  {
+    "Id": 1,
+    "name": "Classic Diamond Engagement Ring",
+    "price": 2999,
+    "originalPrice": 3499,
+    "images": [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1614715838598-2c90dd5a5f16?w=500&h=500&fit=crop"
+    ],
+    "category": "Rings",
+    "metal": "Platinum",
+    "gemstone": "Diamond",
+    "weight": "2.5g",
+    "sizes": ["5", "6", "7", "8", "9"],
+    "stock": 15,
+    "description": "Timeless elegance meets modern sophistication in this stunning diamond engagement ring. Featuring a brilliant-cut center diamond set in premium platinum.",
+    "rating": 4.8,
+    "reviews": 127,
+    "isNew": false,
+    "discount": 14
+  },
+  {
+    "Id": 2,
+    "name": "Vintage Pearl Drop Earrings",
+    "price": 899,
+    "images": [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=500&h=500&fit=crop"
+    ],
+    "category": "Earrings",
+    "metal": "Gold",
+    "gemstone": "Pearl",
+    "weight": "3.2g",
+    "sizes": ["One Size"],
+    "stock": 28,
+    "description": "Elegant cultured pearl drop earrings with vintage-inspired gold detailing. Perfect for special occasions or adding sophistication to everyday wear.",
+    "rating": 4.9,
+    "reviews": 89,
+    "isNew": true,
+    "discount": 0
+  },
+  {
+    "Id": 3,
+    "name": "Rose Gold Tennis Bracelet",
+    "price": 1599,
+    "images": [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&h=500&fit=crop"
+    ],
+    "category": "Bracelets",
+    "metal": "Rose Gold",
+    "gemstone": "Diamond",
+    "weight": "8.1g",
+    "sizes": ["S", "M", "L"],
+    "stock": 12,
+    "description": "Luxurious rose gold tennis bracelet featuring a continuous line of brilliant-cut diamonds. A statement piece that adds glamour to any outfit.",
+    "rating": 4.7,
+    "reviews": 63,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 4,
+    "name": "Sapphire Statement Necklace",
+    "price": 3299,
+    "images": [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1611652022313-8cedfbe7739a?w=500&h=500&fit=crop"
+    ],
+    "category": "Necklaces",
+    "metal": "White Gold",
+    "gemstone": "Sapphire",
+    "weight": "15.3g",
+    "sizes": ["One Size"],
+    "stock": 5,
+    "description": "Exquisite statement necklace featuring multiple sapphires set in lustrous white gold. A showstopping piece for formal events and celebrations.",
+    "rating": 5.0,
+    "reviews": 34,
+    "isNew": true,
+    "discount": 0
+  },
+  {
+    "Id": 5,
+    "name": "Art Deco Emerald Ring",
+    "price": 2199,
+    "images": [
+      "https://images.unsplash.com/photo-1603561596112-db2a491c4c2d?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=500&h=500&fit=crop"
+    ],
+    "category": "Rings",
+    "metal": "Gold",
+    "gemstone": "Emerald",
+    "weight": "4.7g",
+    "sizes": ["5", "6", "7", "8"],
+    "stock": 8,
+    "description": "Inspired by the glamour of the Art Deco era, this emerald ring features geometric details and exceptional craftsmanship in 18k gold.",
+    "rating": 4.6,
+    "reviews": 42,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 6,
+    "name": "Modern Geometric Earrings",
+    "price": 699,
+    "images": [
+      "https://images.unsplash.com/photo-1616848253925-1b617a1e1a4a?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1608031675446-7b1932e1ba53?w=500&h=500&fit=crop"
+    ],
+    "category": "Earrings",
+    "metal": "Silver",
+    "gemstone": "Amethyst",
+    "weight": "2.1g",
+    "sizes": ["One Size"],
+    "stock": 22,
+    "description": "Contemporary geometric earrings featuring faceted amethyst stones in polished sterling silver. Perfect for the modern jewelry enthusiast.",
+    "rating": 4.5,
+    "reviews": 78,
+    "isNew": true,
+    "discount": 0
+  },
+  {
+    "Id": 7,
+    "name": "Vintage Gold Chain Necklace",
+    "price": 1299,
+    "originalPrice": 1599,
+    "images": [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop"
+    ],
+    "category": "Necklaces",
+    "metal": "Gold",
+    "gemstone": "None",
+    "weight": "12.8g",
+    "sizes": ["16 inch", "18 inch", "20 inch"],
+    "stock": 18,
+    "description": "Classic gold chain necklace with vintage-inspired links. A versatile piece that complements both casual and formal attire.",
+    "rating": 4.7,
+    "reviews": 156,
+    "isNew": false,
+    "discount": 19
+  },
+  {
+    "Id": 8,
+    "name": "Diamond Hoop Earrings",
+    "price": 1899,
+    "images": [
+      "https://images.unsplash.com/photo-1611652022313-8cedfbe7739a?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop"
+    ],
+    "category": "Earrings",
+    "metal": "White Gold",
+    "gemstone": "Diamond",
+    "weight": "4.3g",
+    "sizes": ["One Size"],
+    "stock": 14,
+    "description": "Elegant diamond hoop earrings in lustrous white gold. These timeless hoops feature pave-set diamonds for maximum sparkle.",
+    "rating": 4.9,
+    "reviews": 91,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 9,
+    "name": "Ruby and Diamond Ring",
+    "price": 2799,
+    "images": [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1603561596112-db2a491c4c2d?w=500&h=500&fit=crop"
+    ],
+    "category": "Rings",
+    "metal": "Platinum",
+    "gemstone": "Ruby",
+    "weight": "3.9g",
+    "sizes": ["5", "6", "7", "8", "9"],
+    "stock": 6,
+    "description": "Stunning ruby and diamond ring featuring a central ruby surrounded by brilliant diamonds in platinum. A symbol of passion and elegance.",
+    "rating": 4.8,
+    "reviews": 57,
+    "isNew": true,
+    "discount": 0
+  },
+  {
+    "Id": 10,
+    "name": "Pearl and Gold Bracelet",
+    "price": 999,
+    "images": [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop"
+    ],
+    "category": "Bracelets",
+    "metal": "Gold",
+    "gemstone": "Pearl",
+    "weight": "6.7g",
+    "sizes": ["S", "M", "L"],
+    "stock": 20,
+    "description": "Delicate bracelet combining lustrous pearls with gold beads. An elegant accessory that adds sophistication to any ensemble.",
+    "rating": 4.6,
+    "reviews": 112,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 11,
+    "name": "Topaz Pendant Necklace",
+    "price": 1199,
+    "images": [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1611652022313-8cedfbe7739a?w=500&h=500&fit=crop"
+    ],
+    "category": "Necklaces",
+    "metal": "Silver",
+    "gemstone": "Topaz",
+    "weight": "5.4g",
+    "sizes": ["16 inch", "18 inch"],
+    "stock": 16,
+    "description": "Beautiful blue topaz pendant necklace in sterling silver. The brilliant cut topaz catches light beautifully for maximum brilliance.",
+    "rating": 4.4,
+    "reviews": 68,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 12,
+    "name": "Stackable Gold Rings Set",
+    "price": 1599,
+    "originalPrice": 1899,
+    "images": [
+      "https://images.unsplash.com/photo-1614715838598-2c90dd5a5f16?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=500&h=500&fit=crop"
+    ],
+    "category": "Rings",
+    "metal": "Gold",
+    "gemstone": "Diamond",
+    "weight": "5.2g",
+    "sizes": ["5", "6", "7", "8"],
+    "stock": 25,
+    "description": "Set of three stackable gold rings with different diamond patterns. Mix and match to create your perfect combination.",
+    "rating": 4.7,
+    "reviews": 134,
+    "isNew": true,
+    "discount": 16
+  },
+  {
+    "Id": 13,
+    "name": "Opal Drop Earrings",
+    "price": 799,
+    "images": [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1616848253925-1b617a1e1a4a?w=500&h=500&fit=crop"
+    ],
+    "category": "Earrings",
+    "metal": "Rose Gold",
+    "gemstone": "Opal",
+    "weight": "2.8g",
+    "sizes": ["One Size"],
+    "stock": 11,
+    "description": "Enchanting opal drop earrings in rose gold. The play of colors in these Australian opals creates a mesmerizing display.",
+    "rating": 4.5,
+    "reviews": 76,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 14,
+    "name": "Silver Charm Bracelet",
+    "price": 699,
+    "images": [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&h=500&fit=crop"
+    ],
+    "category": "Bracelets",
+    "metal": "Silver",
+    "gemstone": "Various",
+    "weight": "7.9g",
+    "sizes": ["S", "M", "L"],
+    "stock": 32,
+    "description": "Classic sterling silver charm bracelet with five removable charms. Perfect for collecting memories and personal style expression.",
+    "rating": 4.3,
+    "reviews": 198,
+    "isNew": false,
+    "discount": 0
+  },
+  {
+    "Id": 15,
+    "name": "Diamond Solitaire Necklace",
+    "price": 2599,
+    "images": [
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop"
+    ],
+    "category": "Necklaces",
+    "metal": "Platinum",
+    "gemstone": "Diamond",
+    "weight": "3.1g",
+    "sizes": ["16 inch", "18 inch"],
+    "stock": 9,
+    "description": "Timeless diamond solitaire necklace in platinum. Features a brilliant-cut diamond that catches light from every angle.",
+    "rating": 4.9,
+    "reviews": 83,
+    "isNew": true,
+    "discount": 0
+  },
+  {
+    "Id": 16,
+    "name": "Vintage Cocktail Ring",
+    "price": 1799,
+    "images": [
+      "https://images.unsplash.com/photo-1603561596112-db2a491c4c2d?w=500&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop"
+    ],
+    "category": "Rings",
+    "metal": "Gold",
+    "gemstone": "Amethyst",
+    "weight": "6.4g",
+    "sizes": ["6", "7", "8"],
+    "stock": 7,
+    "description": "Bold vintage-style cocktail ring featuring a large amethyst center stone surrounded by smaller accent gems in yellow gold.",
+    "rating": 4.6,
+    "reviews": 45,
+    "isNew": false,
+    "discount": 0
+  }
+]

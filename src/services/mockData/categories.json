@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "name": "Rings",
+    "slug": "rings",
+    "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=300&fit=crop",
+    "productCount": 156
+  },
+  {
+    "Id": 2,
+    "name": "Necklaces",
+    "slug": "necklaces",
+    "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=300&fit=crop",
+    "productCount": 89
+  },
+  {
+    "Id": 3,
+    "name": "Earrings",
+    "slug": "earrings",
+    "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=300&fit=crop",
+    "productCount": 124
+  },
+  {
+    "Id": 4,
+    "name": "Bracelets",
+    "slug": "bracelets",
+    "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop",
+    "productCount": 67
+  },
+  {
+    "Id": 5,
+    "name": "Watches",
+    "slug": "watches",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
+    "productCount": 43
+  },
+  {
+    "Id": 6,
+    "name": "Pendants",
+    "slug": "pendants",
+    "image": "https://images.unsplash.com/photo-1611652022313-8cedfbe7739a?w=400&h=300&fit=crop",
+    "productCount": 52
+  }
+]
